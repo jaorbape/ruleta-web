@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruleta Ganadora</title>
+  <!-- Enlazamos nuestro archivo de estilos CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 
+    Contenedor principal "escenario" con tamaño fijo de 1080x1920 px.
+    Aquí irán todas las imágenes en posiciones absolutas.
+  -->
+  <div class="escenario">
+    <!-- 
+      1) Imagen de fondo (fondo.png)
+         - Ocupa todo el contenedor de 1080x1920.
+         - No gira, está siempre de fondo.
+    -->
+    <img 
+      src="fondo.png" 
+      alt="Fondo de la Ruleta" 
+      class="fondo"
+    />
+
+    <!-- 
+      2) Contenedor de la ruleta (ruleta.png)
+         - Está en la posición x:80.566 px, y:500.565 px.
+         - Tiene un tamaño de 920x920 px.
+         - Dentro de este contenedor, la imagen ruleta.png girará al hacer clic en el botón.
+    -->
+    <div class="ruleta" id="ruleta">
+      <img 
+        src="ruleta.png" 
+        alt="Imagen de la Ruleta" 
+        class="ruleta-img"
+      />
+    </div>
+
+    <!-- 
+      3) Flecha (flecha.png)
+         - Se muestra por encima de la ruleta.
+         - Ubicada en x:459.019 px, y:423.903 px.
+         - Tamaño aproximado: 161.863 px de ancho x 153.230 px de alto.
+         - Tiene un z-index mayor para que quede encima.
+    -->
+    <img 
+      src="flecha.png" 
+      alt="Flecha Indicadora" 
+      class="flecha"
+    />
+
+    <!-- 
+      4) Logo (logo.png)
+         - Resolución de 200x200 px.
+         - Queremos que aparezca en el centro de la ruleta.
+         - Calculamos su posición para que quede centrado en la ruleta
+           (la ruleta está en top: 500.565 y left: 80.566; 
+            su centro es 460 px más abajo y más a la derecha, 
+            y restamos la mitad del logo: 100 px).
+    -->
+    <img 
+      src="logo.png" 
+      alt="Logo en el centro" 
+      class="logo"
+    />
+
+    <!-- 
+      5) Botón (boton.png)
+         - Imagen que actuará como botón para girar la ruleta.
+         - Ubicada en x:259.264 px, y:1522.253 px.
+         - Tamaño: 561.471 px de ancho x 294.772 px de alto.
+         - Al hacer clic en ella, se dispara la animación de giro.
+    -->
+    <img 
+      src="boton.png" 
+      alt="Botón para girar la ruleta" 
+      id="boton"
+      class="boton"
+    />
+  </div>
+
+  <!-- Archivo de JavaScript que controla el giro de la ruleta -->
+  <script src="script.js"></script>
+</body>
+</html>

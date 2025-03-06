@@ -1,0 +1,117 @@
+/* 
+  1) Reseteo básico del body 
+     - Quitamos márgenes y establecemos un color de fondo neutro.
+*/
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+/* 
+  2) Contenedor principal "escenario" 
+     - Tamaño fijo de 1080 px de ancho x 1920 px de alto.
+     - position: relative para que las imágenes hijas se posicionen 
+       con absolute en base a este contenedor.
+     - margin: 0 auto (opcional si deseas centrar en pantalla horizontalmente).
+*/
+.escenario {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  overflow: hidden; /* Evita scroll si algo sobresale. */
+  background-color: #fff; /* Color de fondo por si la imagen no carga. */
+}
+
+/* 
+  3) Imagen de fondo (fondo.png)
+     - Ocupará todo el contenedor .escenario.
+     - Se ubica en top:0, left:0.
+*/
+.fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1080px;
+  height: 1920px;
+  object-fit: cover; /* Ajusta la imagen para cubrir. */
+  z-index: 1; /* Capa base. */
+}
+
+/* 
+  4) Contenedor de la ruleta
+     - Ubicación dada: x:80.566 px, y:500.565 px.
+     - Tamaño de 920x920 px.
+     - z-index mayor que el fondo para que se vea encima.
+*/
+.ruleta {
+  position: absolute;
+  top: 500.565px;
+  left: 80.566px;
+  width: 920px;
+  height: 920px;
+  z-index: 2; 
+  /* 
+    El giro se aplicará a la imagen interna (.ruleta-img) con transform,
+    pero se podría aplicar directamente a .ruleta también si se prefiere.
+  */
+}
+
+/* 
+  5) Imagen de la ruleta (ruleta.png)
+     - Ocupa el 100% del contenedor .ruleta.
+     - Aquí definimos la transición para el giro suave (3s ease-out).
+*/
+.ruleta-img {
+  width: 100%;
+  height: 100%;
+  transition: transform 3s ease-out; /* Efecto de desaceleración. */
+}
+
+/* 
+  6) Flecha (flecha.png)
+     - Ubicada en x:459.019 px, y:423.903 px.
+     - Tamaño aproximado de 161.863 x 153.230 px.
+     - z-index alto para que esté por encima de la ruleta.
+*/
+.flecha {
+  position: absolute;
+  top: 423.903px;
+  left: 459.019px;
+  width: 161.863px;
+  height: 153.23px;
+  z-index: 10;
+}
+
+/* 
+  7) Logo (logo.png)
+     - Tamaño de 200x200 px.
+     - Calculamos la posición para que quede justo en el centro de la ruleta:
+       top = 500.565 + (920/2) - (200/2) = 860.565 px
+       left = 80.566 + (920/2) - (200/2) = 440.566 px
+*/
+.logo {
+  position: absolute;
+  top: 860.565px;
+  left: 440.566px;
+  width: 200px;
+  height: 200px;
+  z-index: 5; /* Por encima de la ruleta pero debajo de la flecha */
+}
+
+/* 
+  8) Botón (boton.png)
+     - Ubicado en x:259.264 px, y:1522.253 px.
+     - Tamaño de 561.471 x 294.772 px.
+     - z-index intermedio, pero debe estar por encima para ser clicable.
+*/
+.boton {
+  position: absolute;
+  top: 1522.253px;
+  left: 259.264px;
+  width: 561.471px;
+  height: 294.772px;
+  cursor: pointer; /* Indica que es interactivo */
+  z-index: 3;
+}
